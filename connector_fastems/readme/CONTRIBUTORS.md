@@ -1,0 +1,2 @@
+- [Futural Oy](https://futural.fi):
+   - Valtteri Lattu <valtteri.lattu@futural.fi>
