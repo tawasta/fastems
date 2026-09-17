@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_mms_backend_manager,mms.backend manager,model_mms_backend,base.group_system,1,1,1,1
-access_mms_production_order_binding_manager,mms.production.order.binding manager,model_mms_production_order_binding,base.group_system,1,1,1,1
-access_mms_production_order_binding_user,mms.production.order.binding user,model_mms_production_order_binding,base.group_user,1,0,0,0
-access_mms_binding_mixin,mms.binding.mixin,model_mms_binding_mixin,base.group_system,1,0,0,0
+access_mms_backend_manager,mms.backend manager,model_mms_backend,connector.group_connector_manager,1,1,1,1
+access_mms_production_order_binding_manager,mms.production.order.binding manager,model_mms_production_order_binding,connector.group_connector_manager,1,1,1,1
+access_mms_production_order_binding_user,mms.production.order.binding user,model_mms_production_order_binding,mrp.group_mrp_user,1,0,0,0
+access_mms_binding_mixin,mms.binding.mixin,model_mms_binding_mixin,mrp.group_mrp_user,1,0,0,0

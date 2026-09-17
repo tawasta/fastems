@@ -33,6 +33,7 @@
         "mrp",
         "queue_job",
         "api_request_handler",
+        "connector",
     ],
     "data": [
         "security/ir.model.access.csv",
