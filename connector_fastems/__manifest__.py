@@ -35,6 +35,7 @@
         "api_request_handler",
         "connector",
     ],
+    "development_status": "Alpha",
     "data": [
         "security/ir.model.access.csv",
         "views/mms_backend_views.xml",
