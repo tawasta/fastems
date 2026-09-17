@@ -418,9 +418,10 @@ HTTP header). Every API request and response is logged to
 <tt class="docutils literal">api.request</tt> (via the shared <tt class="docutils literal">api_request_handler</tt> module) for
 debugging and audit.</p>
 <p><tt class="docutils literal">mms.backend</tt> stores the API credentials, so it is readable and
-writable only by administrators (<tt class="docutils literal">base.group_system</tt>). Production
-Order Bindings are also readable by regular internal users, but only
-administrators can create, edit or delete them.</p>
+writable only by Connector Managers
+(<tt class="docutils literal">connector.group_connector_manager</tt>). Production Order Bindings are
+also readable by manufacturing users (<tt class="docutils literal">mrp.group_mrp_user</tt>), but only
+Connector Managers can create, edit or delete them.</p>
 </div>
 <div class="section" id="installation">
 <h1><a class="toc-backref" href="#toc-entry-2">Installation</a></h1>
@@ -430,7 +431,7 @@ administrators can create, edit or delete them.</p>
 <h1><a class="toc-backref" href="#toc-entry-3">Configuration</a></h1>
 <div class="section" id="backend">
 <h2><a class="toc-backref" href="#toc-entry-4">Backend</a></h2>
-<p><strong>MMS Integration &gt; Backends &gt; New</strong></p>
+<p><strong>Connectors &gt; Fastems MMS &gt; Backends &gt; New</strong></p>
 <ul class="simple">
 <li><strong>Name</strong> - descriptive name, e.g. <tt class="docutils literal">MMS Production</tt></li>
 <li><strong>API URL</strong> - base address of the MMS server’s REST API</li>
@@ -450,7 +451,7 @@ whether it succeeds or fails.</p>
 </div>
 <div class="section" id="binding">
 <h2><a class="toc-backref" href="#toc-entry-5">Binding</a></h2>
-<p><strong>MMS Integration &gt; Production Order Bindings &gt; New</strong></p>
+<p><strong>Connectors &gt; Fastems MMS &gt; Production Order Bindings &gt; New</strong></p>
 <ul class="simple">
 <li><strong>Manufacturing Order</strong> - the Odoo production order (must already have
 a <strong>Deadline</strong> set)</li>

@@ -13,6 +13,7 @@ HTTP header). Every API request and response is logged to `api.request`
 (via the shared `api_request_handler` module) for debugging and audit.
 
 `mms.backend` stores the API credentials, so it is readable and writable
-only by administrators (`base.group_system`). Production Order Bindings
-are also readable by regular internal users, but only administrators can
-create, edit or delete them.
+only by Connector Managers (`connector.group_connector_manager`).
+Production Order Bindings are also readable by manufacturing users
+(`mrp.group_mrp_user`), but only Connector Managers can create, edit or
+delete them.

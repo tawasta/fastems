@@ -1,6 +1,6 @@
 ## Backend
 
-**MMS Integration \> Backends \> New**
+**Connectors \> Fastems MMS \> Backends \> New**
 
 * **Name** - descriptive name, e.g. `MMS Production`
 * **API URL** - base address of the MMS server's REST API
@@ -17,7 +17,7 @@ it succeeds or fails.
 
 ## Binding
 
-**MMS Integration \> Production Order Bindings \> New**
+**Connectors \> Fastems MMS \> Production Order Bindings \> New**
 
 * **Manufacturing Order** - the Odoo production order (must already have a **Deadline** set)
 * **Backend** - the MMS backend to use
