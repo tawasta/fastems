@@ -267,11 +267,13 @@ class MmsProductionOrderBinding(models.Model):
             "PartMasterData": self.mms_part_master_data,
             "Amount": int(production.product_qty),
             "OrderStatus": self.mms_order_status,
-            "DueDate": production.date_deadline.strftime("%Y-%m-%dT%H:%M:%S"),
+            # Odoo datetime fields are stored as naive UTC; MMS requires full
+            # ISO8601 with an explicit offset, so mark it as UTC with "Z".
+            "DueDate": production.date_deadline.strftime("%Y-%m-%dT%H:%M:%SZ"),
         }
         if production.date_start:
             payload["EarliestStart"] = production.date_start.strftime(
-                "%Y-%m-%dT%H:%M:%S"
+                "%Y-%m-%dT%H:%M:%SZ"
             )
         if production.origin:
             payload["Description"] = production.origin
@@ -453,8 +455,12 @@ class MmsProductionOrderBinding(models.Model):
             workorder.button_start()
 
         elif target_state == "done":
-            # write produced qty if MMS provided it
-            qty = report.get("Amount") or report.get("OrderedAmount")
+            # "done" is only reached via OperationCompletedReport, which has
+            # no "Amount" field - only OrderedAmount and ScrappedAmount, so
+            # the produced qty must subtract scrap to avoid overcounting.
+            qty = report.get("Amount")
+            if qty is None and report.get("OrderedAmount") is not None:
+                qty = report.get("OrderedAmount") - (report.get("ScrappedAmount") or 0)
             if qty:
                 workorder.write({"qty_production": int(qty)})
             # Must be in progress before finishing
